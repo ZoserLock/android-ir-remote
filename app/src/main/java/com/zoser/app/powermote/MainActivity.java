@@ -8,13 +8,11 @@ import android.widget.Button;
 
 import java.io.Console;
 
-/**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
- */
 public class MainActivity extends AppCompatActivity
 {
     private IRController _irController;
+
+    private Button  _buttonPowerAll;
 
     private Button [] _button = new Button[12];
 
@@ -29,7 +27,11 @@ public class MainActivity extends AppCompatActivity
 
         setContentView(R.layout.main_activity);
 
+        getSupportActionBar().hide();
+
         _irController= new IRController(getApplicationContext());
+
+        _buttonPowerAll = (Button)findViewById(R.id.id_Button_ALL);
 
         _button[0] = (Button)findViewById(R.id.id_Button_0);
         _button[1] = (Button)findViewById(R.id.id_Button_1);
@@ -46,6 +48,27 @@ public class MainActivity extends AppCompatActivity
         _button[9] = (Button)findViewById(R.id.id_Button_9);
         _button[10] = (Button)findViewById(R.id.id_Button_10);
         _button[11] = (Button)findViewById(R.id.id_Button_11);
+
+
+        _buttonPowerAll.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                try
+                {
+                    _irController.SendMessage(IRMessages.HDMI_SPLITTER_ON);
+                    Thread.sleep(40);
+                    _irController.SendMessage(IRMessages.HOME_LG_TV_ON);
+                    Thread.sleep(40);
+                    _irController.SendMessage(IRMessages.HOME_SONY_HT_ON);
+
+                }catch(InterruptedException e)
+                {
+
+                }
+            }
+        });
 
 
         _button[0].setOnClickListener(new View.OnClickListener()
@@ -102,15 +125,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        _button[6].setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                _irController.SendMessage(IRMessages.HDMI_SPLITTER_SET_4);
-            }
-        });
-
         _button[7].setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -119,6 +133,16 @@ public class MainActivity extends AppCompatActivity
                 _irController.SendMessage(IRMessages.HDMI_SPLITTER_SET_5);
             }
         });
+
+        _button[10].setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                _irController.SendMessage(IRMessages.HDMI_SPLITTER_SET_4);
+            }
+        });
+
 
     }
 }

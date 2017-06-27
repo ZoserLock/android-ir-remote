@@ -11,12 +11,29 @@
         android:layout_height="match_parent"
         android:layout_centerHorizontal = "true"
         android:orientation="vertical"
-        android:weightSum="4"
+        android:weightSum="5"
+        android:layout_margin="5dp"
     >
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.6"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            >
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="POWER ALL"
+                android:id="@+id/id_Button_ALL"
+                />
+
+        </android.support.v7.widget.LinearLayoutCompat>
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.1"
         android:orientation="horizontal"
         android:weightSum="3"
         >
@@ -46,7 +63,7 @@
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.1"
             android:orientation="horizontal"
             android:weightSum="3"
             >
@@ -76,7 +93,7 @@
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.1"
             android:orientation="horizontal"
             android:weightSum="3"
             >
@@ -84,14 +101,14 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="NINTENDO SWITCH"
+                android:text=""
                 android:id="@+id/id_Button_6"
                 />
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Chromecast "
+                android:text="Google Chromecast "
                 android:id="@+id/id_Button_7"
                 />
             <Button
@@ -102,11 +119,12 @@
                 android:id="@+id/id_Button_8"
                 />
 
+
         </android.support.v7.widget.LinearLayoutCompat>
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.1"
             android:orientation="horizontal"
             android:weightSum="3"
             >
@@ -121,6 +139,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:id="@+id/id_Button_10"
+                android:text="Nintendo Switch"
 
                 />
             <Button
@@ -134,6 +153,15 @@
         </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v7.widget.LinearLayoutCompat>
 
+    <Button
+        android:id="@+id/id_Button_6"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="128dp"
+        android:layout_weight="1"
+        android:text="NINTENDO SWITCH"/>
 
 
 </RelativeLayout>
