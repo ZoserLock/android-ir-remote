@@ -15,17 +15,17 @@ public class IRMessage
         _message   = message;
     }
 
-    public int GetFrequency()
+    public int getFrequency()
     {
         return _frequency;
     }
 
-    public int[] GetMessage()
+    public int[] getMessage()
     {
         return _message;
     }
 
-    public int GetMessageTime()
+    public int getMessageTime()
     {
         int time=0;
         for(int a=0;a < _message.length;++a)

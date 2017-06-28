@@ -19,18 +19,18 @@ public class IRNecFactory
     public static final int REPEAT_TIME = 110000;
 
 
-    public static IRMessage Create(int command, int addr, int repeats)
+    public static IRMessage create(int command, int addr, int repeats)
     {
         List<Integer> message = new ArrayList<>();
 
         message.add(HDR_MARK);
         message.add(HDR_SPACE);
 
-        List<Integer> header1 = DecodeInt(addr,8);
-        List<Integer> header2 = DecodeInt(~addr,8);
+        List<Integer> header1 = decodeInt(addr,8);
+        List<Integer> header2 = decodeInt(~addr,8);
 
-        List<Integer> data1 = DecodeInt(command,8);
-        List<Integer> data2 = DecodeInt(~command,8);
+        List<Integer> data1 = decodeInt(command,8);
+        List<Integer> data2 = decodeInt(~command,8);
 
         message.addAll(header1);
         message.addAll(header2);
@@ -65,7 +65,7 @@ public class IRNecFactory
         return new IRMessage(IRMessage.FREQ_38_KHZ,finalCode);
     }
 
-    private static List<Integer> DecodeInt(int num, int bits)
+    private static List<Integer> decodeInt(int num, int bits)
     {
         List<Integer> values = new ArrayList<>();
         for (int i = bits - 1; i >= 0; i--)

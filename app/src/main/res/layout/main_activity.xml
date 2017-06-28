@@ -3,10 +3,10 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="@color/remote_background"
 >
 
-    <android.support.v7.widget.LinearLayoutCompat
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal = "true"
@@ -14,144 +14,70 @@
         android:weightSum="5"
         android:layout_margin="5dp"
     >
-        <android.support.v7.widget.LinearLayoutCompat
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.6"
             android:orientation="horizontal"
             android:weightSum="1"
             >
-            <Button
+            <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="POWER ALL"
                 android:id="@+id/id_Button_ALL"
+                android:background="@color/remote_button"
+                android:src="@drawable/icon_02"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_margin="5dp"
+                android:textColor="@color/remote_text"
                 />
 
-        </android.support.v7.widget.LinearLayoutCompat>
-    <android.support.v7.widget.LinearLayoutCompat
+        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/id_Layout_Row_01"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.1"
         android:orientation="horizontal"
         android:weightSum="3"
         >
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="POWER HDMI"
-            android:id="@+id/id_Button_0"
-            />
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="POWER TV"
-            android:id="@+id/id_Button_1"
-            />
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="POWER HT"
-            android:id="@+id/id_Button_2"
-            />
 
-    </android.support.v7.widget.LinearLayoutCompat>
-        <android.support.v7.widget.LinearLayoutCompat
+    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/id_Layout_Row_02"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.1"
             android:orientation="horizontal"
             android:weightSum="3"
             >
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="HDMI 1"
-                android:id="@+id/id_Button_3"
-                />
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="HDMI 2"
-                android:id="@+id/id_Button_4"
-                />
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="HDMI 3"
-                android:id="@+id/id_Button_5"
-                />
 
-        </android.support.v7.widget.LinearLayoutCompat>
-        <android.support.v7.widget.LinearLayoutCompat
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/id_Layout_Row_03"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.1"
             android:orientation="horizontal"
             android:weightSum="3"
             >
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text=""
-                android:id="@+id/id_Button_6"
-                />
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Google Chromecast "
-                android:id="@+id/id_Button_7"
-                />
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Volume UP"
-                android:id="@+id/id_Button_8"
-                />
 
 
-        </android.support.v7.widget.LinearLayoutCompat>
-        <android.support.v7.widget.LinearLayoutCompat
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/id_Layout_Row_04"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.1"
             android:orientation="horizontal"
             android:weightSum="3"
             >
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/id_Button_9"
-                />
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/id_Button_10"
-                android:text="Nintendo Switch"
 
-                />
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/id_Button_11"
-                android:text="Volume Down"
-                />
-
-        </android.support.v7.widget.LinearLayoutCompat>
-    </android.support.v7.widget.LinearLayoutCompat>
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/id_Button_6"

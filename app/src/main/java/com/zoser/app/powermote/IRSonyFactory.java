@@ -18,7 +18,7 @@ public class IRSonyFactory
 
     public static final int REPEAT_TIME = 45000;
 
-    public static IRMessage Create(int mode, int command, int addr, int repeats)
+    public static IRMessage create(int mode, int command, int addr, int repeats)
     {
         List<Integer> tempMessage = new ArrayList<>();
         List<Integer> outMessage = new ArrayList<>();
@@ -26,19 +26,19 @@ public class IRSonyFactory
         tempMessage.add(HDR_MARK);
         tempMessage.add(HDR_SPACE);
 
-        List<Integer> cmdPulses = DecodeInt(command,7);
+        List<Integer> cmdPulses = decodeInt(command,7);
         List<Integer> addrPulses = null;
 
         switch(mode)
         {
             case TYPE_12_BITS:
-                addrPulses = DecodeInt(addr,5);
+                addrPulses = decodeInt(addr,5);
                 break;
             case TYPE_15_BITS:
-                addrPulses = DecodeInt(addr,8);
+                addrPulses = decodeInt(addr,8);
                 break;
             case TYPE_20_BITS:
-                addrPulses = DecodeInt(addr,13);
+                addrPulses = decodeInt(addr,13);
                 break;
             default:
                 break;
@@ -84,7 +84,7 @@ public class IRSonyFactory
     }
 
 
-    private static List<Integer> DecodeInt(int num, int bits)
+    private static List<Integer> decodeInt(int num, int bits)
     {
         List<Integer> values = new ArrayList<>();
         for (int i = bits - 1; i >= 0; i--)

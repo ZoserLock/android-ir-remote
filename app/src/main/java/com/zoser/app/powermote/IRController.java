@@ -29,12 +29,12 @@ public class IRController
         }
     }
 
-    public boolean SendMessage(IRMessage message)
+    public boolean sendMessage(IRMessage message)
     {
         if(_enabled)
         {
-            int frequency = message.GetFrequency();
-            int [] codes = message.GetMessage();
+            int frequency = message.getFrequency();
+            int [] codes = message.getMessage();
 
             _vibrator.vibrate(50);
 
