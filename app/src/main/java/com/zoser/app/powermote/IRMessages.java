@@ -7,7 +7,8 @@ public class IRMessages
 
     // Sony HT
     public static IRMessage HOME_SONY_HT_ON;
-
+    public static IRMessage HOME_SONY_HT_VOLUME_UP;
+    public static IRMessage HOME_SONY_HT_VOLUME_DOWN;
     // HDMI SPLITTER
     public static IRMessage HDMI_SPLITTER_ON;
     public static IRMessage HDMI_SPLITTER_SET_1;
@@ -18,20 +19,26 @@ public class IRMessages
 
     // LG TV
     public static IRMessage HOME_LG_TV_ON;
+    public static IRMessage HOME_LG_TV_VOLUME_UP;
+    public static IRMessage HOME_LG_TV_VOLUME_DOWN;
 
     public static void initialize()
     {
         // Sony Speaker
-        HOME_SONY_SPEAKER_ON = IRSonyFactory.create(IRSonyFactory.TYPE_12_BITS,84,1,6);
+        HOME_SONY_SPEAKER_ON = IRSonyFactory.create(IRSonyFactory.TYPE_12_BITS,84,1,4);
 
         // Sony HT
-        HOME_SONY_HT_ON      = IRSonyFactory.create(IRSonyFactory.TYPE_15_BITS,84,10,6);
+        HOME_SONY_HT_ON      = IRSonyFactory.create(IRSonyFactory.TYPE_15_BITS,84,10,4);
+        HOME_SONY_HT_VOLUME_UP = IRSonyFactory.create(IRSonyFactory.TYPE_15_BITS,36,10,4);
+        HOME_SONY_HT_VOLUME_DOWN = IRSonyFactory.create(IRSonyFactory.TYPE_15_BITS,100,10,4);
 
         // LG TV
-        HOME_LG_TV_ON       = IRNecFactory.create(16,32,3);
+        HOME_LG_TV_ON           = IRNecFactory.create(16,32,3);
+        HOME_LG_TV_VOLUME_UP    = IRNecFactory.create(64,32,3);
+        HOME_LG_TV_VOLUME_DOWN  = IRNecFactory.create(192,32,3);
 
         //HDMI SPLITTER
-        HDMI_SPLITTER_ON    = IRNecFactory.create(98,0,1);
+        HDMI_SPLITTER_ON    = IRNecFactory.create(98,0,0);
         HDMI_SPLITTER_SET_1 = IRNecFactory.create(2,0,0);
         HDMI_SPLITTER_SET_2 = IRNecFactory.create(224,0,0);
         HDMI_SPLITTER_SET_3 = IRNecFactory.create(168,0,0);

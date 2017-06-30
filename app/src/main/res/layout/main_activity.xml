@@ -17,21 +17,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="1"
             >
+
             <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="POWER ALL"
                 android:id="@+id/id_Button_ALL"
-                android:background="@color/remote_button"
-                android:src="@drawable/icon_02"
+                android:background="@drawable/button_selector_red"
+                android:src="@drawable/icon_09"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
                 android:layout_margin="5dp"
+                android:textAlignment="viewEnd"
                 android:textColor="@color/remote_text"
                 />
 
@@ -40,7 +42,7 @@
         android:id="@+id/id_Layout_Row_01"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.1"
+        android:layout_weight="1"
         android:orientation="horizontal"
         android:weightSum="3"
         >
@@ -50,7 +52,7 @@
             android:id="@+id/id_Layout_Row_02"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.1"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="3"
             >
@@ -60,7 +62,7 @@
             android:id="@+id/id_Layout_Row_03"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.1"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="3"
             >
@@ -71,7 +73,7 @@
             android:id="@+id/id_Layout_Row_04"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.1"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="3"
             >

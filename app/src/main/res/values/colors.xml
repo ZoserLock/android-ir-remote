@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#212121</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#202020</color>
     <color name="colorAccent">#303030</color>
 
     <color name="black_overlay">#66000000</color>
 
     <color name="remote_background">#212121</color>
     <color name="remote_button">#303030</color>
+    <color name="remote_button_hover">#404040</color>
+    <color name="remote_button_pressed">#202020</color>
     <color name="remote_text">#f0f0f0</color>
+
+
+    <color name="remote_button_red">#832f2f</color>
+    <color name="remote_button_red_hover">#AA4040</color>
 </resources>
