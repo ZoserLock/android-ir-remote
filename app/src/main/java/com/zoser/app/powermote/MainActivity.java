@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(v == _button[7])
         {
-            _irController.sendMessage(IRMessages.HDMI_SPLITTER_SET_4);
+            _irController.sendMessage(IRMessages.HDMI_SPLITTER_SET_5);
         }
 
         if(v == _button[8])
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(v == _button[10])
         {
-            _irController.sendMessage(IRMessages.HDMI_SPLITTER_SET_5);
+            _irController.sendMessage(IRMessages.HDMI_SPLITTER_SET_4);
         }
 
         if(v == _button[11])
