@@ -3,13 +3,10 @@ package com.zoser.app.powermote;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by zoser on 6/26/2017.
- */
-
 public class IRNecFactory
 {
     public static final int HDR_MARK  = 9000;
+
     public static final int HDR_SPACE = 4500;
 
     public static final int ONE_MARK  = 1687;
@@ -17,7 +14,7 @@ public class IRNecFactory
     public static final int SPACE     = 562;
 
     public static final int REPEAT_TIME = 110000;
-
+    public static final int REPEAT_SPACE  = 2250;
 
     public static IRMessage create(int command, int addr, int repeats)
     {
@@ -49,11 +46,30 @@ public class IRNecFactory
         for(int a=0;a<repeats;a++)
         {
             message.add(HDR_MARK);
-            message.add(HDR_SPACE);
+            message.add(REPEAT_SPACE);
             message.add(SPACE);
-            message.add(REPEAT_TIME - (HDR_MARK + HDR_SPACE +SPACE));
+            message.add(REPEAT_TIME - (HDR_MARK + REPEAT_SPACE +SPACE));
         }
 
+
+        int [] finalCode = new int[message.size()];
+
+        for(int a=0;a<message.size();++a)
+        {
+            finalCode[a] = message.get(a).intValue();
+        }
+
+        return new IRMessage(IRMessage.FREQ_38_KHZ,finalCode);
+    }
+
+    public static IRMessage createRepeat()
+    {
+        List<Integer> message = new ArrayList<>();
+
+        message.add(HDR_MARK);
+        message.add(REPEAT_SPACE);
+        message.add(SPACE);
+        message.add(REPEAT_TIME - (HDR_MARK + REPEAT_SPACE +SPACE));
 
         int [] finalCode = new int[message.size()];
 

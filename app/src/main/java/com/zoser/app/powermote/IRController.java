@@ -2,23 +2,31 @@ package com.zoser.app.powermote;
 
 import android.content.Context;
 import android.hardware.ConsumerIrManager;
-import android.os.Vibrator;
+import android.util.Log;
 
-public class IRController
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class IRController extends Thread
 {
-    private ConsumerIrManager _irManager;
+    private static int MAX_QUEUED_COUNT = 2;
+    private static int MAX_WAIT_PER_PULSE_MS = 40;
+    private static int MAX_WAIT_PER_MESSAGE_MS = 40;
 
-    private Vibrator _vibrator;
+    private ConsumerIrManager _irManager;
 
     private Context _context = null;
 
     private boolean _enabled = false;
 
+    private Object _messageLock = new Object();
+    private Queue<IRMessageRequest> _messageQueue = new LinkedList<IRMessageRequest>();
+
     public IRController(Context context)
     {
         _context = context;
         _irManager = (ConsumerIrManager)context.getSystemService(Context.CONSUMER_IR_SERVICE);
-        _vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 
         if(_irManager != null)
         {
@@ -29,17 +37,127 @@ public class IRController
         }
     }
 
-    public boolean sendMessage(IRMessage message)
+    private void executeMessage(IRMessageRequest request)
     {
         if(_enabled)
         {
-            int frequency = message.getFrequency();
-            int [] codes = message.getMessage();
+           // long nanoTime = System.nanoTime();
 
-            _vibrator.vibrate(50);
+            ArrayList<IRMessage> messages = request.getMessages();
+            for(int a=0;a<messages.size();++a)
+            {
+                IRMessage message = messages.get(a);
 
-            _irManager.transmit(frequency, codes);
+                int frequency = message.getFrequency();
+                int [] codes = message.getMessage();
+
+                _irManager.transmit(frequency, codes);
+                WaitPerMessage();
+            }
+
+            // Log.d("Zoser","Emit:"+((System.nanoTime()-nanoTime)/1000));
         }
-        return false;
+    }
+
+    public long sendMessage(IRMessageRequest request)
+    {
+        long time = request.getRequestTime();
+        synchronized(_messageLock)
+        {
+            if(_messageQueue.size() < MAX_QUEUED_COUNT)
+            {
+                _messageQueue.add(request);
+                _messageLock.notify();
+            }
+        }
+        return time;
+    }
+
+
+    public void startWork()
+    {
+        this.start();
+    }
+
+    public void stopWork()
+    {
+        sendMessage(null);
+        try
+        {
+            join();
+        }
+        catch(InterruptedException e)
+        {
+            Log.d("Zoser","Interupted");
+        }
+    }
+
+    @Override
+    public void run()
+    {
+        Log.d("Zoser","Worker Starts!");
+        while(true)
+        {
+
+            IRMessageRequest message = null;
+            synchronized(_messageLock)
+            {
+                if(_messageQueue.size() > 0)
+                {
+                    message = _messageQueue.poll();
+
+                    if(message == null)
+                    {
+                        Log.d("Zoser", "Clossing Worker!");
+                        break;
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        _messageLock.wait();
+                    }
+                    catch(InterruptedException e)
+                    {
+                        Log.d("Zoser","Interupted");
+                    }
+                }
+            }
+
+            if(message != null)
+            {
+                executeMessage(message);
+            }
+
+            WaitPerPulse();
+
+        }
+        Log.d("Zoser","Worker Stops!");
+    }
+
+    private void WaitPerPulse()
+    {
+        try
+        {
+            Thread.sleep(MAX_WAIT_PER_PULSE_MS);
+        }
+        catch(InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void WaitPerMessage()
+    {
+        try
+        {
+            Thread.sleep(MAX_WAIT_PER_MESSAGE_MS);
+        }
+        catch(InterruptedException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

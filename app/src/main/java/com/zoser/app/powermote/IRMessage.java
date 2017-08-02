@@ -7,12 +7,15 @@ public class IRMessage
     public static int FREQ_40_KHZ = 40000;
 
     private int _frequency;
+    private int _messageTime;
     private int [] _message;
 
-    public IRMessage(int frequency,int [] message)
+    public IRMessage(int frequency, int [] message)
     {
-        _frequency = frequency;
-        _message   = message;
+        _frequency   = frequency;
+        _message     = message;
+
+        calculateMessageTime();
     }
 
     public int getFrequency()
@@ -27,12 +30,17 @@ public class IRMessage
 
     public int getMessageTime()
     {
+        return _messageTime;
+    }
+
+    private void calculateMessageTime()
+    {
         int time=0;
         for(int a=0;a < _message.length;++a)
         {
             time += _message[a];
         }
-        return time;
+        _messageTime = time;
     }
 }
 
