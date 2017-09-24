@@ -21,7 +21,7 @@ public class IRMessageRequest
 
     public long getRequestTime()
     {
-        long time=0;
+        long time = 0;
         for(int a=0;a<_messages.size();++a)
         {
             time += _messages.get(a).getMessageTime();

@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         _button[3] =  createIRButton("HDMI 1",R.drawable.icon_09,_rows[1],new IRMessageRequest(IRMessages.HDMI_SPLITTER_SET_1));
         _button[4] =  createIRButton("HDMI 2",R.drawable.icon_09,_rows[1],new IRMessageRequest(IRMessages.HDMI_SPLITTER_SET_2));
-        _button[5] =  createIRButton("HDMI 3",R.drawable.icon_09,_rows[1],new IRMessageRequest(IRMessages.HDMI_SPLITTER_SET_3));
+        _button[5] =  createIRButton("HTPC",R.drawable.icon_10,_rows[1],new IRMessageRequest(IRMessages.HDMI_SPLITTER_SET_3));
 
         _button[6] =  createIRButton("VOLUME UP",R.drawable.icon_02,_rows[2],new IRMessageRequest(IRMessages.HOME_LG_TV_VOLUME_UP));
         _button[7] =  createIRButton("CHROMECAST",R.drawable.icon_06,_rows[2],new IRMessageRequest(IRMessages.HDMI_SPLITTER_SET_5));
@@ -158,8 +158,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 {
                     _waitTime = sendIRMessage(((IRMessageRequest) v.getTag()));
                 }
-
-                Log.d("Zoser","T:"+_waitTime);
                 return true;
             }
         }
@@ -169,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     public long sendIRMessage(IRMessageRequest request)
     {
-        _vibrator.vibrate(20);
+        _vibrator.vibrate(60);
         return _irController.sendMessage(request);
     }
 }

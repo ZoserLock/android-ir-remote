@@ -41,10 +41,8 @@ public class IRController extends Thread
     {
         if(_enabled)
         {
-           // long nanoTime = System.nanoTime();
-
             ArrayList<IRMessage> messages = request.getMessages();
-            for(int a=0;a<messages.size();++a)
+            for(int a = 0;a < messages.size();++a)
             {
                 IRMessage message = messages.get(a);
 
@@ -54,8 +52,6 @@ public class IRController extends Thread
                 _irManager.transmit(frequency, codes);
                 WaitPerMessage();
             }
-
-            // Log.d("Zoser","Emit:"+((System.nanoTime()-nanoTime)/1000));
         }
     }
 
@@ -108,7 +104,7 @@ public class IRController extends Thread
 
                     if(message == null)
                     {
-                        Log.d("Zoser", "Clossing Worker!");
+                        Log.d("Zoser", "Closing Worker!");
                         break;
                     }
                 }

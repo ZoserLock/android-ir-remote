@@ -35,7 +35,7 @@ public class IRMessage
 
     private void calculateMessageTime()
     {
-        int time=0;
+        int time = 0;
         for(int a=0;a < _message.length;++a)
         {
             time += _message[a];
