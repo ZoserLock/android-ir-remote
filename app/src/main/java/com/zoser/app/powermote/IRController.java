@@ -57,7 +57,6 @@ public class IRController extends Thread
 
     public long sendMessage(IRMessageRequest request)
     {
-        long time = request.getRequestTime();
         synchronized(_messageLock)
         {
             if(_messageQueue.size() < MAX_QUEUED_COUNT)
@@ -66,7 +65,16 @@ public class IRController extends Thread
                 _messageLock.notify();
             }
         }
-        return time;
+
+        if(request != null)
+        {
+            long time = request.getRequestTime();
+            return time;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
 
